@@ -11,6 +11,7 @@ public class FahrenheitPane extends GridPane {
     private Label result;
     private TextField fahrenheit;
 
+
     public FahrenheitPane() {
         Font font = new Font(18);
         Label inputLabel = new Label("Fahrenheit:");
