@@ -9,9 +9,10 @@ import javafx.scene.text.Font;
 public class BankAccountGUI extends Application {
 
     private TextField pinNum;
+    private double money = 0;
 
-
-    public BankAccountGUI(){
+    @Override
+    public void start (Stage primaryStage){
 
         Font font = new Font(18);
 
@@ -19,19 +20,17 @@ public class BankAccountGUI extends Application {
         pinNum.setFont(font);
         pinNum.setPrefWidth(70);
         pinNum.setAlignment(Pos.CENTER);
+        pinNum.setOnAction(this::processPin);
 
     }
 
-
-
-    @Override
-    public void start(Stage primaryStage) {
-
+    public void processPin(ActionEvent event) {
+        double r = Double.parseDouble(pinNum.getText());
 
 
 
+        }
+        public static void main (String[]args){
+            launch(args);
+        }
     }
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
