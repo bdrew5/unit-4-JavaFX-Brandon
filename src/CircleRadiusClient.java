@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class CircleRadiusClient extends Application {
+    @Override
     public void start(Stage stage) {
         Scene scene = new Scene(new CircleRadius(), 500, 500);
 

@@ -1,5 +1,5 @@
 import java.text.DecimalFormat;
-public class BankAccount{
+public class BankAccount {
     private String password;
     private String username;
     private double balence;
@@ -7,55 +7,72 @@ public class BankAccount{
     private int accountNumber;
     private double ammountInterest;
     private double ammountFromInterest;
-    private DecimalFormat df = new DecimalFormat("#.##");
 
-    public BankAccount(String newUsername, String newPassword, double newBalence){
-        password = newUsername;
-        username = newPassword;
-        accountNumber = (int) (Math.random()*1000000) + 10000000;
-        balence = newBalence;
-    }
+    public class Bank {
+        private int pinNumber;
+        private double balance = 0;
+        private boolean lockCard = false;
+        private double interest;
+        private String name;
 
-    public String getBalence() {
-        return df.format(balence);
-    }
+        public Bank(String n, int pNum) {
+            pinNumber = pNum;
+            name = n;
+        }
 
-    public String getPassword() {
-        return password;
-    }
+        public String toString() {
+            String result = "";
+            if (lockCard)
+                System.out.println("Sorry, your card is locked and unable to be used at this time.");
+            else {
+                result += "Balance: " + balance + "\n";
+                result += "Pin Number: " + pinNumber + "\n";
+                result += "Name: " + name + "\n";
+            }
+            return result;
+        }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setBalence(double balence) {
-        this.balence = balence;
-    }
 
-    public void addBalence(double addBalence){
-        balence += addBalence;
-    }
-    public void roundBalence(){
-        balence = Math.round(balence*100) / 100;
-    }
-    public void setInterests(double interestsRate){
-        ammountInterest = interestsRate;
-    }
-    public void interestsCalculator(int days){
-        ammountFromInterest = (balence)*(ammountInterest)*(days);
-        balence += ammountFromInterest;
-    }
+        public int getPinNumber() {
+            return pinNumber;
+        }
 
-    public String getAmmountFromInterest() {
-        return df.format(ammountFromInterest);
-    }
+        public double getbalance() {
+            return balance;
+        }
 
-    public String toString(){
-        String accountInfo = "";
-        accountInfo += "Username: " + username + "\n";
-        accountInfo += "Password: " + password + "\n";
-        accountInfo += "Account Number: " + accountNumber + "\n";
-        accountInfo += "Balence: " + df.format(balence) + "\n";
-        return accountInfo;
+        public void setBalance(double newBalance) {
+            balance = newBalance;
+
+
+        }
+
+        public double withdraw(double withdraw) {
+            balance = balance - withdraw;
+            if (balance == 0)
+                System.out.println("You don't have any money in your account");
+            return balance;
+        }
+
+        public double deposit(double deposit) {
+            balance = balance + deposit;
+            return balance;
+        }
+
+        public void lockCard() {
+            lockCard = true;
+
+        }
+
+        public void newCard() {
+            pinNumber = (int) (Math.random() * 1000000000);
+        }
+
+        public void unlockCard() {
+            lockCard = false;
+        }
+
+
     }
 }
