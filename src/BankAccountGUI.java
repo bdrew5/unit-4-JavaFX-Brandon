@@ -14,11 +14,15 @@ import javafx.scene.layout.GridPane;
 
 public class BankAccountGUI extends Application {
 
-    private TextField pinNum;
+    private TextField pinNum1;
+    private TextField pinNum2;
     private TextField name;
     private double money = 0;
-    private Text pinNumText;
+    private Text pinNumText1;
+    private Text pinNumText2;
     private Text nameText;
+    private String n;
+    private int pin;
 
 
     @Override
@@ -28,13 +32,20 @@ public class BankAccountGUI extends Application {
 
         nameText = new Text("Name");
 
-        pinNumText = new Text("Pin Number");
+        pinNumText1 = new Text("Pin Number");
+        pinNumText2 = new Text("Pin Number");
 
-        pinNum = new TextField();
-        pinNum.setFont(font);
-        pinNum.setPrefWidth(70);
-        pinNum.setAlignment(Pos.CENTER);
-        pinNum.setOnAction(this::processPin);
+        pinNum1 = new TextField();
+        pinNum1.setFont(font);
+        pinNum1.setPrefWidth(70);
+        pinNum1.setAlignment(Pos.CENTER);
+        pinNum1.setOnAction(this::processPin1);
+
+        pinNum2 = new TextField();
+        pinNum2.setFont(font);
+        pinNum2.setPrefWidth(70);
+        pinNum2.setAlignment(Pos.CENTER);
+        pinNum2.setOnAction(this::processPin2);
 
         name = new TextField();
         name.setFont(font);
@@ -48,7 +59,7 @@ public class BankAccountGUI extends Application {
 
 
 
-        FlowPane pane = new FlowPane(nameText, pinNumText, name, pinNum, create);
+        FlowPane pane = new FlowPane(nameText, pinNumText1, pinNumText2, pinNum2, name, pinNum, create);
         pane.setAlignment(Pos.CENTER);
         pane.setHgap(20);
         pane.setStyle("-fx-background-color: white");
@@ -60,18 +71,24 @@ public class BankAccountGUI extends Application {
         stage.show();
     }
 
-    public void processPin(ActionEvent event1) {
-        double pi = Double.parseDouble(pinNum.getText());
-        }
+    public void processPin1(ActionEvent event1) {
+        int pi1 = int.parseInt(pinNum.getText());
+    }
+    public void processPin1(ActionEvent event1) {
+        int pi2 = int.parseInt(pinNum.getText());
+    }
 
     public void processName(ActionEvent event3) {
-            double na = Double.parseDouble(pinNum.getText());
-        }
+        String na = String.parseString(name.getText());
+
+    }
 
     public void processMake(ActionEvent event4){
-        BankAccount b1 = new BankAccount(na, pi);
-        }
+        BankAccount b1 = new BankAccount(na, pi1);
+    }
+
+
     public static void main(String[] args) {
         launch(args);
     }
-    }
+}
